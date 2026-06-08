@@ -581,13 +581,11 @@
         Open for Projects — AI Automation Specialist
       </div>
 
-      <!-- Headline -->
-      <h1 class="font-serif text-5xl md:text-6xl lg:text-7xl font-bold leading-tight text-stone-900 mb-6">
-        Otomasisasi Proses<br />
-        <em class="not-italic" style="color:var(--tc);">Kurangi Pekerjaan Manual.</em><br />
-        <span class="text-stone-400">Tingkatkan Pertumbuhan.</span>
-      </h1>
-
+<h1 class="font-serif text-5xl md:text-6xl lg:text-7xl font-bold leading-tight text-stone-900 mb-6">
+  Otomatisasi Proses<br />
+  <em class="not-italic" style="color:var(--tc);">Kurangi Pekerjaan Manual.</em><br />
+  <span id="typing-slogan" class="text-stone-400"></span>
+</h1>
       <!-- Sub-headline -->
       <p class="font-sans text-stone-500 text-xl leading-relaxed max-w-xl mb-10">
         Felix.AI merancang pipeline otomatisasi berbasis AI — dari
@@ -911,7 +909,7 @@
         Yang Kami <em class="not-italic" style="color:var(--tc);">Bangun</em> untuk Anda
       </h2>
       <p class="font-sans text-stone-500 text-lg max-w-lg leading-relaxed">
-        Setiap solusi dirancang khusus — bukan template generik, bukan solusi setengah matang.
+        Setiap solusi dirancang khusus, dan spesifik untuk proses bisnis Anda.
       </p>
     </div>
 
@@ -929,7 +927,7 @@
         </div>
         <h3 class="font-serif text-2xl font-bold text-stone-800 mb-3">WhatsApp &amp; Telegram AI Bot</h3>
         <p class="font-sans text-stone-500 text-base leading-relaxed mb-6">
-          Asisten AI cerdas yang melayani pelanggan Anda 24/7 di WhatsApp dan Telegram. Mampu menjawab FAQ, memproses pesanan, hingga escalation ke human-agent — berbasis LLM dengan knowledge base bisnis Anda sendiri.
+          Asisten AI cerdas yang melayani pelanggan Anda 24/7 di WhatsApp dan Telegram. Mampu menjawab FAQ, memproses pesanan, hingga eskalasi ke human-agent — berbasis LLM dengan knowledge base bisnis Anda sendiri.
         </p>
         <div class="flex flex-wrap gap-2">
           <span class="tag">n8n / Make.com</span>
@@ -1391,6 +1389,19 @@
       }
       v.src = "https://cdn.voiceflow.com/widget-next/bundle.mjs"; v.type = "text/javascript"; s.parentNode.insertBefore(v, s);
   })(document, 'script');
+</script>
+<script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+<script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+
+<script>
+  var typed = new Typed('#typing-slogan', {
+    strings: ['Tingkatkan Pertumbuhan.'], // Teks yang akan diketik
+    typeSpeed: 50,       // Kecepatan ngetik (semakin kecil semakin cepat)
+    startDelay: 1200,    // Delay 1.2 detik (menunggu user selesai baca baris 1 & 2 baru animasi mulai)
+    showCursor: true,    // Memunculkan kursor kedip-kedip teks
+    cursorChar: '|',     // Karakter kursor ala kodingan terminal
+    loop: false          // Set ke false agar setelah selesai mengetik, teksnya diam menetap
+  });
 </script>
 </body>
 </html>

@@ -1,0 +1,1396 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ============================================================
+       SEO
+  ============================================================ -->
+  <title>Felix.AI — AI Automation Engineer</title>
+  <meta name="description" content="Felix.AI merancang sistem AI Automation yang menghemat puluhan jam kerja bisnis Anda setiap minggu. Spesialis n8n, Make.com, LLM, RAG & CRM Integration." />
+  <meta name="keywords" content="AI Automation, n8n, Make.com, LLM, RAG, CRM, WhatsApp Bot, AI Engineer, Felix AI" />
+  <meta property="og:title" content="Felix.AI — AI Automation Engineer" />
+  <meta property="og:description" content="Sistem AI Automation yang bekerja saat Anda tidur." />
+  <meta property="og:type" content="website" />
+
+  <!-- ============================================================
+       FONTS — Playfair Display + Inter
+  ============================================================ -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- ============================================================
+       TAILWIND CSS via CDN
+  ============================================================ -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- ============================================================
+       FONT AWESOME ICONS via CDN
+  ============================================================ -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+
+  <!-- ============================================================
+       ALPINE.JS via CDN
+  ============================================================ -->
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+  <!-- ============================================================
+       TAILWIND CONFIG
+  ============================================================ -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            serif: ['Playfair Display', 'Georgia', 'serif'],
+            sans:  ['Inter', 'system-ui', 'sans-serif'],
+          },
+          colors: {
+            cream: '#fbfaf7',
+            tc: {
+              DEFAULT: '#b85c38',
+              light:   '#d4795a',
+              dark:    '#8f3f22',
+            },
+          },
+        },
+      },
+    };
+  </script>
+
+  <!-- ============================================================
+       CUSTOM CSS
+  ============================================================ -->
+  <style>
+    /* ---- Base ---- */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { -webkit-font-smoothing: antialiased; }
+
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background-color: #fbfaf7;
+      color: #292524;
+      overflow-x: hidden;
+    }
+
+    /* ---- CSS Variables ---- */
+    :root {
+      --tc:       #b85c38;
+      --tc-light: #d4795a;
+      --tc-dark:  #8f3f22;
+      --tc-bg:    rgba(184, 92, 56, 0.06);
+      --tc-border:rgba(184, 92, 56, 0.2);
+      --cream:    #fbfaf7;
+      --stone-50: #fafaf9;
+      --stone-100:#f5f5f4;
+      --stone-200:#e7e5e4;
+      --stone-300:#d6d3d1;
+      --stone-400:#a8a29e;
+      --stone-500:#78716c;
+      --stone-600:#57534e;
+      --stone-700:#44403c;
+      --stone-800:#292524;
+      --stone-900:#1c1917;
+    }
+
+    /* ---- Typography ---- */
+    .font-serif { font-family: 'Playfair Display', Georgia, serif; }
+    .font-sans  { font-family: 'Inter', system-ui, sans-serif; }
+
+    /* ---- Navbar ---- */
+    .navbar {
+      background: rgba(251, 250, 247, 0.92);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(184, 92, 56, 0.1);
+    }
+
+    /* ---- Felix.AI Logo ---- */
+    .logo-felix {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 1.3rem;
+      color: #1c1917;
+      letter-spacing: -0.01em;
+    }
+    .logo-ai {
+      font-family: 'Inter', sans-serif;
+      font-weight: 300;
+      font-size: 1.1rem;
+      color: var(--tc);
+      letter-spacing: 0.1em;
+    }
+
+    /* ---- Eyebrow label ---- */
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--tc);
+      padding: 5px 14px;
+      border: 1px solid var(--tc-border);
+      border-radius: 999px;
+      background: var(--tc-bg);
+    }
+
+    /* ---- Section divider ---- */
+    .divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent 0%, rgba(184,92,56,0.2) 30%, rgba(184,92,56,0.2) 70%, transparent 100%);
+    }
+
+    /* ---- Buttons ---- */
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 30px;
+      background: var(--tc);
+      color: #fff;
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: 0.9rem;
+      border-radius: 10px;
+      text-decoration: none;
+      transition: background 0.2s, box-shadow 0.25s, transform 0.2s;
+    }
+    .btn-primary:hover {
+      background: var(--tc-light);
+      box-shadow: 0 8px 28px rgba(184,92,56,0.35);
+      transform: translateY(-2px);
+    }
+
+    .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 30px;
+      background: #fff;
+      color: var(--stone-600);
+      font-family: 'Inter', sans-serif;
+      font-weight: 500;
+      font-size: 0.9rem;
+      border-radius: 10px;
+      border: 1px solid var(--stone-200);
+      text-decoration: none;
+      transition: border-color 0.2s, color 0.2s, box-shadow 0.2s, transform 0.2s;
+    }
+    .btn-ghost:hover {
+      border-color: var(--tc-border);
+      color: var(--tc);
+      box-shadow: 0 4px 16px rgba(184,92,56,0.1);
+      transform: translateY(-2px);
+    }
+
+    .btn-wa {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 30px;
+      background: #22c55e;
+      color: #fff;
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: 0.9rem;
+      border-radius: 10px;
+      text-decoration: none;
+      transition: background 0.2s, box-shadow 0.2s, transform 0.2s;
+    }
+    .btn-wa:hover {
+      background: #16a34a;
+      box-shadow: 0 8px 24px rgba(34,197,94,0.3);
+      transform: translateY(-2px);
+    }
+
+    /* ---- Nav link ---- */
+    .nav-link {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.875rem;
+      font-weight: 450;
+      color: var(--stone-500);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-link:hover { color: var(--stone-900); }
+
+    /* ---- Hero section ---- */
+    .hero-bg {
+      background:
+        radial-gradient(ellipse 65% 40% at 90% 10%, rgba(184,92,56,0.06) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 35% at 10% 80%, rgba(184,92,56,0.04) 0%, transparent 55%),
+        #fbfaf7;
+    }
+
+    /* ---- Card — light mode ---- */
+    .card {
+      background: #ffffff;
+      border: 1px solid var(--stone-200);
+      border-radius: 16px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.04), 0 4px 16px rgba(0,0,0,0.03);
+      transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+    .card:hover {
+      border-color: var(--tc-border);
+      box-shadow: 0 4px 20px rgba(184,92,56,0.1), 0 1px 4px rgba(0,0,0,0.04);
+      transform: translateY(-3px);
+    }
+
+    /* ---- Project card (portfolio) ---- */
+    .project-card {
+      background: #ffffff;
+      border: 1px solid #e7e5e4;
+      border-radius: 20px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      padding: 40px 44px;
+      transition: box-shadow 0.3s, transform 0.3s, border-color 0.3s;
+      position: relative;
+    }
+    .project-card:hover {
+      box-shadow: 0 8px 32px rgba(184,92,56,0.1);
+      border-color: rgba(184,92,56,0.25);
+      transform: translateY(-3px);
+    }
+
+    /* ---- Tag pill ---- */
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 500;
+      padding: 4px 12px;
+      border-radius: 999px;
+      background: #f5f5f4;
+      border: 1px solid #e7e5e4;
+      color: #78716c;
+    }
+
+    /* ---- Metric ---- */
+    .metric {
+      font-family: 'Playfair Display', serif;
+      font-weight: 800;
+      color: var(--tc);
+      line-height: 1;
+    }
+
+    /* ---- Left accent bar for project cards ---- */
+    .accent-bar {
+      width: 4px;
+      border-radius: 4px;
+      background: linear-gradient(180deg, var(--tc), rgba(184,92,56,0.2));
+      flex-shrink: 0;
+      align-self: stretch;
+    }
+
+    /* ---- Status dot ---- */
+    @keyframes statusPulse {
+      0%,100% { opacity: 1; }
+      50%      { opacity: 0.3; }
+    }
+    .status-dot {
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #22c55e;
+      animation: statusPulse 2s ease-in-out infinite;
+      box-shadow: 0 0 0 3px rgba(34,197,94,0.15);
+      flex-shrink: 0;
+    }
+
+    /* ============================================================
+       WORKFLOW ANIMATION — warm terracotta palette on light bg
+    ============================================================ */
+
+    /* Active connector */
+    .conn-active {
+      position: relative;
+      width: 2px;
+      background: linear-gradient(180deg, rgba(184,92,56,0.15), rgba(184,92,56,0.4), rgba(184,92,56,0.15));
+      border-radius: 2px;
+      overflow: hidden;
+    }
+    .conn-active::after {
+      content: '';
+      position: absolute;
+      top: -40%; left: 0;
+      width: 100%; height: 40%;
+      background: linear-gradient(180deg, transparent, var(--tc-light), transparent);
+      border-radius: 2px;
+      animation: connFlow 1.7s ease-in-out infinite;
+    }
+    @keyframes connFlow {
+      0%   { top: -40%; opacity: 0; }
+      20%  { opacity: 1; }
+      80%  { opacity: 1; }
+      100% { top: 140%; opacity: 0; }
+    }
+
+    /* Dim dashed connector */
+    .conn-dim {
+      width: 2px;
+      background: repeating-linear-gradient(
+        180deg,
+        #d6d3d1 0px, #d6d3d1 5px,
+        transparent 5px, transparent 10px
+      );
+      border-radius: 2px;
+    }
+
+    /* Particle dot */
+    @keyframes particleDrop {
+      0%   { top: 0%;   opacity: 0; }
+      15%  { opacity: 1; }
+      85%  { opacity: 1; }
+      100% { top: 100%; opacity: 0; }
+    }
+    .particle-dot {
+      position: absolute;
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: var(--tc);
+      box-shadow: 0 0 10px rgba(184,92,56,0.5);
+      left: 50%; transform: translateX(-50%);
+      animation: particleDrop 1.7s ease-in-out infinite;
+    }
+    .particle-dot.d2 { animation-delay: 0.57s; }
+    .particle-dot.d3 { animation-delay: 1.14s; }
+
+    /* Node pulse ring */
+    @keyframes nodeRing {
+      0%   { transform: scale(1);   opacity: 0.4; }
+      100% { transform: scale(1.75); opacity: 0; }
+    }
+    .node-ring {
+      position: absolute;
+      inset: -5px; border-radius: inherit;
+      border: 1px solid rgba(184,92,56,0.3);
+      animation: nodeRing 2.2s ease-out infinite;
+      pointer-events: none;
+    }
+    .node-ring.r2 { animation-delay: 0.73s; }
+    .node-ring.r3 { animation-delay: 1.46s; }
+
+    /* Node glow */
+    @keyframes nodeGlow {
+      0%,100% { box-shadow: 0 0 0 0 rgba(184,92,56,0); }
+      50%      { box-shadow: 0 0 16px 4px rgba(184,92,56,0.18); }
+    }
+    .node-glow   { animation: nodeGlow 2.5s ease-in-out infinite; }
+    .node-glow-2 { animation: nodeGlow 2.5s ease-in-out 0.83s infinite; }
+    .node-glow-3 { animation: nodeGlow 2.5s ease-in-out 1.66s infinite; }
+
+    /* Workflow node box */
+    .wf-node {
+      background: #fff;
+      border: 1px solid #e7e5e4;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 14px 16px;
+      position: relative;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+    }
+    .wf-node-active {
+      border-color: rgba(184,92,56,0.28);
+      box-shadow: 0 2px 12px rgba(184,92,56,0.08);
+    }
+    .wf-node-dim { opacity: 0.42; }
+    .wf-node-icon {
+      width: 38px; height: 38px;
+      border-radius: 9px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; font-size: 1rem;
+    }
+
+    /* ---- Footer social ---- */
+    .footer-social {
+      width: 40px; height: 40px;
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      border: 1px solid var(--stone-200);
+      color: var(--stone-400);
+      text-decoration: none;
+      transition: border-color 0.2s, color 0.2s, background 0.2s;
+    }
+    .footer-social:hover {
+      border-color: var(--tc-border);
+      color: var(--tc);
+      background: var(--tc-bg);
+    }
+
+    /* ---- Scroll reveal ---- */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ---- Scroll-to-top ---- */
+    #scroll-top {
+      position: fixed;
+      bottom: 28px; right: 28px;
+      width: 42px; height: 42px;
+      border-radius: 10px;
+      background: #fff;
+      border: 1px solid var(--stone-200);
+      color: var(--stone-500);
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; z-index: 100;
+      opacity: 0; transform: translateY(10px);
+      transition: opacity 0.3s, transform 0.3s, box-shadow 0.2s, color 0.2s;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    }
+    #scroll-top.show { opacity: 1; transform: translateY(0); }
+    #scroll-top:hover { color: var(--tc); box-shadow: 0 4px 20px rgba(184,92,56,0.15); border-color: var(--tc-border); }
+
+    /* ---- Card badge ---- */
+    .cbadge {
+      display: inline-flex; align-items: center; gap: 5px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.65rem; font-weight: 600;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 3px 10px; border-radius: 999px;
+    }
+    .cb-tc    { background: rgba(184,92,56,0.08); border: 1px solid rgba(184,92,56,0.2); color: var(--tc); }
+    .cb-stone { background: #f5f5f4; border: 1px solid #e7e5e4; color: #78716c; }
+    .cb-green { background: rgba(34,197,94,0.08); border: 1px solid rgba(34,197,94,0.2); color: #16a34a; }
+
+    /* ---- Horizontal editorial rule ---- */
+    hr.soft { border: none; height: 1px; background: #e7e5e4; }
+
+    /* ---- Progress bar ---- */
+    .prog-bar {
+      height: 4px; border-radius: 999px;
+      background: #f5f5f4; overflow: hidden;
+    }
+    .prog-fill {
+      height: 100%; border-radius: 999px;
+      background: linear-gradient(90deg, var(--tc-dark), var(--tc-light));
+    }
+
+    /* ---- Stat box inside project card ---- */
+    .stat-box {
+      background: #fbfaf7;
+      border: 1px solid #e7e5e4;
+      border-radius: 12px;
+      padding: 20px 24px;
+    }
+
+    /* ---- Problem / Solution label pills ---- */
+    .label-pill {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 999px;
+    }
+    .lp-red   { background: rgba(239,68,68,0.07);  border: 1px solid rgba(239,68,68,0.18);  color: #dc2626; }
+    .lp-green { background: rgba(34,197,94,0.07);  border: 1px solid rgba(34,197,94,0.18);  color: #16a34a; }
+  </style>
+</head>
+
+<body>
+
+<!-- ============================================================
+     NAVBAR
+============================================================ -->
+<nav class="navbar fixed top-0 left-0 right-0 z-50" x-data="{ open: false }">
+  <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+
+    <!-- Logo -->
+    <a href="#hero" style="text-decoration:none;">
+      <span class="logo-felix">Felix</span><span class="logo-ai">.AI</span>
+    </a>
+
+    <!-- Desktop links -->
+    <div class="hidden md:flex items-center gap-8">
+      <a href="#workflow"    class="nav-link">Cara Kerja</a>
+      <a href="#services"   class="nav-link">Layanan</a>
+      <a href="#portfolio"  class="nav-link">Proyek</a>
+      <a href="#contact"    class="nav-link">Kontak</a>
+    </div>
+
+    <!-- CTA Desktop -->
+    <a href="https://wa.me/6382168696399" target="_blank" rel="noopener"
+       class="hidden md:inline-flex btn-primary"
+       style="padding:10px 22px; font-size:0.82rem; border-radius:8px;">
+      <i class="fa-brands fa-whatsapp"></i>
+      Mulai Konsultasi
+    </a>
+
+    <!-- Hamburger -->
+    <button @click="open = !open"
+            class="md:hidden p-2 text-stone-400 hover:text-stone-800 transition-colors"
+            aria-label="Menu">
+      <i class="fa-solid" :class="open ? 'fa-xmark' : 'fa-bars'"></i>
+    </button>
+  </div>
+
+  <!-- Mobile menu -->
+  <div x-show="open" x-transition
+       class="md:hidden border-t px-6 py-5 flex flex-col gap-5"
+       style="border-color:#e7e5e4; background:#fbfaf7;">
+    <a href="#workflow"   @click="open=false" class="nav-link">Cara Kerja</a>
+    <a href="#services"   @click="open=false" class="nav-link">Layanan</a>
+    <a href="#portfolio"  @click="open=false" class="nav-link">Proyek</a>
+    <a href="#contact"    @click="open=false" class="nav-link">Kontak</a>
+    <a href="https://wa.me/6382168696399" target="_blank" rel="noopener"
+       class="btn-primary" style="justify-content:center;">
+      <i class="fa-brands fa-whatsapp"></i>Mulai Konsultasi
+    </a>
+  </div>
+</nav>
+
+
+<!-- ============================================================
+     SECTION 1 — HERO
+============================================================ -->
+<section id="hero" class="hero-bg min-h-screen flex items-center pt-16 relative overflow-hidden">
+
+  <!-- Decorative blobs -->
+  <div class="pointer-events-none absolute top-16 right-0 w-[480px] h-[480px] rounded-full"
+       style="background:radial-gradient(circle, rgba(184,92,56,0.07) 0%, transparent 65%);"></div>
+  <div class="pointer-events-none absolute bottom-0 left-0 w-[340px] h-[340px] rounded-full"
+       style="background:radial-gradient(circle, rgba(184,92,56,0.04) 0%, transparent 65%);"></div>
+
+  <div class="max-w-6xl mx-auto px-6 py-28 md:py-40 relative">
+    <div class="max-w-3xl">
+
+      <!-- Eyebrow -->
+      <div class="eyebrow mb-8">
+        <span class="status-dot"></span>
+        Open for Projects — AI Automation Specialist
+      </div>
+
+      <!-- Headline -->
+      <h1 class="font-serif text-5xl md:text-6xl lg:text-7xl font-bold leading-tight text-stone-900 mb-6">
+        Bisnis Anda<br />
+        <em class="not-italic" style="color:var(--tc);">Berjalan Sendiri.</em><br />
+        <span class="text-stone-400">Sementara Anda Tidur.</span>
+      </h1>
+
+      <!-- Sub-headline -->
+      <p class="font-sans text-stone-500 text-xl leading-relaxed max-w-xl mb-10">
+        Felix.AI merancang pipeline otomatisasi berbasis AI — dari
+        <span class="text-stone-700 font-medium">WhatsApp Intelligent Bot</span>,
+        <span class="text-stone-700 font-medium">CRM Auto-Sync</span>, hingga
+        <span class="text-stone-700 font-medium">LLM &amp; RAG Integration</span> —
+        agar tim Anda fokus pada hal yang benar-benar penting.
+      </p>
+
+      <!-- CTA buttons -->
+      <div class="flex flex-col sm:flex-row gap-4 items-start mb-14">
+        <a href="https://wa.me/6382168696399" target="_blank" rel="noopener"
+           id="hero-cta-wa" class="btn-primary">
+          <i class="fa-brands fa-whatsapp text-lg"></i>
+          Konsultasi Gratis via WA
+        </a>
+        <a href="https://calendly.com/tobingfelix2/30min" target="_blank" rel="noopener"
+           id="hero-cta-cal" class="btn-ghost">
+          <i class="fa-regular fa-calendar"></i>
+          Jadwalkan Demo
+        </a>
+      </div>
+
+      <!-- Social proof strip -->
+      <div class="flex flex-wrap items-center gap-x-8 gap-y-3 font-sans text-sm text-stone-400">
+        <div class="flex items-center gap-2">
+          <i class="fa-solid fa-check" style="color:var(--tc); font-size:0.75rem;"></i>
+          n8n &amp; Make.com Expert
+        </div>
+        <div class="flex items-center gap-2">
+          <i class="fa-solid fa-check" style="color:var(--tc); font-size:0.75rem;"></i>
+          OpenAI / Gemini / Claude
+        </div>
+        <div class="flex items-center gap-2">
+          <i class="fa-solid fa-check" style="color:var(--tc); font-size:0.75rem;"></i>
+          RAG &amp; Vector DB
+        </div>
+        <div class="flex items-center gap-2">
+          <i class="fa-solid fa-check" style="color:var(--tc); font-size:0.75rem;"></i>
+          Fast Turnaround &amp; Documented
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Scroll hint -->
+  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 text-stone-300 text-xs flex flex-col items-center gap-1 animate-bounce">
+    <i class="fa-solid fa-chevron-down"></i>
+  </div>
+</section>
+
+
+<!-- Divider -->
+<div class="divider"></div>
+
+
+<!-- ============================================================
+     SECTION 2 — ANIMATED WORKFLOW DEMO
+============================================================ -->
+<section id="workflow" class="py-24 md:py-32 px-6 relative overflow-hidden">
+
+  <!-- Very subtle warm tint -->
+  <div class="pointer-events-none absolute inset-0"
+       style="background: radial-gradient(ellipse 70% 45% at 50% 50%, rgba(184,92,56,0.025) 0%, transparent 70%);"></div>
+
+  <div class="max-w-6xl mx-auto relative">
+
+    <!-- Header -->
+    <div class="mb-16 reveal">
+      <div class="eyebrow mb-5">Cara Kerja</div>
+      <h2 class="font-serif text-4xl md:text-5xl font-bold text-stone-900 mb-4 leading-tight">
+        Manual <em class="not-italic" style="color:var(--tc);">versus</em> Otomatis
+      </h2>
+      <p class="font-sans text-stone-500 text-lg max-w-lg leading-relaxed">
+        Lihat perbedaan nyata antara proses manual yang melelahkan dengan pipeline AI yang bekerja 24/7 tanpa henti.
+      </p>
+    </div>
+
+    <!-- Comparison columns -->
+    <div class="grid md:grid-cols-2 gap-8 mb-10">
+
+      <!-- LEFT — Before (Manual) -->
+      <div class="card p-8 md:p-10" style="border-color:#fecaca; box-shadow:0 2px 8px rgba(239,68,68,0.05);">
+
+        <div class="flex items-center gap-3 mb-8">
+          <div class="w-9 h-9 rounded-xl flex items-center justify-center"
+               style="background:rgba(239,68,68,0.07); border:1px solid rgba(239,68,68,0.18);">
+            <i class="fa-solid fa-xmark text-red-500 text-sm"></i>
+          </div>
+          <div>
+            <p class="font-sans text-sm font-semibold text-stone-700">Sebelum Otomatisasi</p>
+            <p class="font-sans text-xs text-stone-400">Proses Manual — Lambat &amp; Rawan Error</p>
+          </div>
+          <span class="cbadge cb-stone ml-auto">Manual</span>
+        </div>
+
+        <!-- Manual flow -->
+        <div class="flex flex-col">
+
+          <div class="wf-node">
+            <div class="wf-node-icon" style="background:#f5f5f4; border:1px solid #e7e5e4;">
+              <i class="fa-regular fa-envelope text-stone-400"></i>
+            </div>
+            <div class="flex-1 min-w-0">
+              <p class="font-sans text-sm font-semibold text-stone-700">Input Data Manual</p>
+              <p class="font-sans text-xs text-stone-400">Email / Form / Spreadsheet</p>
+            </div>
+            <span class="font-sans text-xs font-semibold text-red-500">~2 jam</span>
+          </div>
+
+          <div class="flex gap-4 items-center my-1 pl-5">
+            <div class="conn-dim" style="height:38px;"></div>
+            <span class="font-sans text-xs text-stone-300">Menunggu staff tersedia…</span>
+          </div>
+
+          <div class="wf-node wf-node-dim">
+            <div class="wf-node-icon" style="background:#f5f5f4; border:1px solid #e7e5e4;">
+              <i class="fa-regular fa-clock text-stone-400"></i>
+            </div>
+            <div class="flex-1 min-w-0">
+              <p class="font-sans text-sm font-semibold text-stone-600">Copy-Paste ke CRM</p>
+              <p class="font-sans text-xs text-stone-400">Salin data secara manual</p>
+            </div>
+            <span class="font-sans text-xs font-semibold text-red-500">~1 jam</span>
+          </div>
+
+          <div class="flex gap-4 items-center my-1 pl-5">
+            <div class="conn-dim" style="height:38px;"></div>
+            <span class="font-sans text-xs text-stone-300">Human error possible…</span>
+          </div>
+
+          <div class="wf-node" style="opacity:0.3;">
+            <div class="wf-node-icon" style="background:#fef9c3; border:1px solid #fde047;">
+              <i class="fa-solid fa-triangle-exclamation text-yellow-500"></i>
+            </div>
+            <div class="flex-1 min-w-0">
+              <p class="font-sans text-sm font-semibold text-stone-500">Kirim Notifikasi 1-per-1</p>
+              <p class="font-sans text-xs text-stone-400">WhatsApp / Email manual</p>
+            </div>
+            <span class="font-sans text-xs font-semibold text-red-500">~45 mnt</span>
+          </div>
+
+          <div class="mt-6 flex items-center justify-between px-5 py-4 rounded-xl"
+               style="background:rgba(239,68,68,0.04); border:1px solid rgba(239,68,68,0.12);">
+            <span class="font-sans text-sm text-stone-500">Total waktu terbuang</span>
+            <span class="font-sans text-sm font-bold text-red-500">4+ Jam / Entry</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT — After (AI Automated) -->
+      <div class="card p-8 md:p-10" style="border-color:rgba(184,92,56,0.22); box-shadow:0 4px 20px rgba(184,92,56,0.08);">
+
+        <!-- Warm glow -->
+        <div class="pointer-events-none absolute top-0 right-0 w-52 h-52 rounded-full"
+             style="background:radial-gradient(circle, rgba(184,92,56,0.06) 0%, transparent 65%);"></div>
+
+        <div class="flex items-center gap-3 mb-8 relative">
+          <div class="w-9 h-9 rounded-xl flex items-center justify-center"
+               style="background:rgba(184,92,56,0.08); border:1px solid rgba(184,92,56,0.2);">
+            <i class="fa-solid fa-bolt text-sm" style="color:var(--tc);"></i>
+          </div>
+          <div>
+            <p class="font-sans text-sm font-semibold text-stone-700">Sesudah Otomatisasi AI</p>
+            <p class="font-sans text-xs text-stone-400">Pipeline 24/7 — Real-time, Tanpa Henti</p>
+          </div>
+          <div class="ml-auto flex items-center gap-2">
+            <div class="status-dot"></div>
+            <span class="font-sans text-xs font-semibold text-green-600">LIVE</span>
+          </div>
+        </div>
+
+        <div class="flex flex-col relative">
+
+          <!-- Node 1: Webhook -->
+          <div class="wf-node wf-node-active node-glow relative">
+            <div class="node-ring"></div>
+            <div class="node-ring r2"></div>
+            <div class="wf-node-icon"
+                 style="background:rgba(184,92,56,0.08); border:1px solid rgba(184,92,56,0.2);">
+              <i class="fa-solid fa-satellite-dish" style="color:var(--tc);"></i>
+            </div>
+            <div class="flex-1 min-w-0">
+              <div class="flex items-center gap-2">
+                <p class="font-sans text-sm font-semibold text-stone-700">Webhook Trigger</p>
+                <span class="cbadge cb-tc" style="font-size:0.58rem; padding:2px 8px;">n8n</span>
+              </div>
+              <p class="font-sans text-xs text-stone-400">Deteksi input baru otomatis</p>
+            </div>
+            <span class="font-sans text-xs font-bold text-green-600">&lt; 1 dtk</span>
+          </div>
+
+          <!-- Connector 1→2 -->
+          <div class="relative my-1 pl-5" style="height:42px;">
+            <div class="conn-active absolute" style="left:20px; top:0; bottom:0;">
+              <div class="particle-dot"></div>
+              <div class="particle-dot d2"></div>
+            </div>
+          </div>
+
+          <!-- Node 2: LLM -->
+          <div class="wf-node wf-node-active node-glow-2 relative">
+            <div class="node-ring r2"></div>
+            <div class="wf-node-icon"
+                 style="background:rgba(139,92,246,0.07); border:1px solid rgba(139,92,246,0.2);">
+              <i class="fa-solid fa-brain text-purple-500"></i>
+            </div>
+            <div class="flex-1 min-w-0">
+              <div class="flex items-center gap-2">
+                <p class="font-sans text-sm font-semibold text-stone-700">OpenAI / LLM Node</p>
+                <span class="cbadge"
+                      style="font-size:0.58rem; padding:2px 8px; background:rgba(139,92,246,0.07); border:1px solid rgba(139,92,246,0.2); color:#7c3aed;">GPT-4o</span>
+              </div>
+              <p class="font-sans text-xs text-stone-400">Analisis, klasifikasi &amp; respons AI</p>
+            </div>
+            <span class="font-sans text-xs font-bold text-green-600">&lt; 3 dtk</span>
+          </div>
+
+          <!-- Connector 2→3 -->
+          <div class="relative my-1 pl-5" style="height:42px;">
+            <div class="conn-active absolute" style="left:20px; top:0; bottom:0;">
+              <div class="particle-dot d2"></div>
+              <div class="particle-dot d3"></div>
+            </div>
+          </div>
+
+          <!-- Node 3: DB/CRM -->
+          <div class="wf-node wf-node-active node-glow-3 relative">
+            <div class="node-ring r3"></div>
+            <div class="wf-node-icon"
+                 style="background:rgba(34,197,94,0.07); border:1px solid rgba(34,197,94,0.2);">
+              <i class="fa-solid fa-database text-green-600"></i>
+            </div>
+            <div class="flex-1 min-w-0">
+              <div class="flex items-center gap-2">
+                <p class="font-sans text-sm font-semibold text-stone-700">CRM / Database Update</p>
+                <span class="cbadge cb-green" style="font-size:0.58rem; padding:2px 8px;">Auto-sync</span>
+              </div>
+              <p class="font-sans text-xs text-stone-400">Tersimpan ke Notion / Sheets / SQL</p>
+            </div>
+            <span class="font-sans text-xs font-bold text-green-600">&lt; 1 dtk</span>
+          </div>
+
+          <!-- Connector 3→4 -->
+          <div class="relative my-1 pl-5" style="height:42px;">
+            <div class="conn-active absolute" style="left:20px; top:0; bottom:0;">
+              <div class="particle-dot d3"></div>
+              <div class="particle-dot"></div>
+            </div>
+          </div>
+
+          <!-- Node 4: Alert -->
+          <div class="wf-node wf-node-active relative">
+            <div class="wf-node-icon"
+                 style="background:rgba(14,165,233,0.07); border:1px solid rgba(14,165,233,0.2);">
+              <i class="fa-brands fa-telegram text-sky-500"></i>
+            </div>
+            <div class="flex-1 min-w-0">
+              <div class="flex items-center gap-2">
+                <p class="font-sans text-sm font-semibold text-stone-700">Notifikasi Otomatis</p>
+                <span class="cbadge"
+                      style="font-size:0.58rem; padding:2px 8px; background:rgba(14,165,233,0.07); border:1px solid rgba(14,165,233,0.2); color:#0284c7;">Telegram</span>
+              </div>
+              <p class="font-sans text-xs text-stone-400">Alert real-time + laporan terjadwal</p>
+            </div>
+            <span class="font-sans text-xs font-bold text-green-600">Instant</span>
+          </div>
+
+          <!-- Result row -->
+          <div class="mt-6 flex items-center justify-between px-5 py-4 rounded-xl"
+               style="background:rgba(34,197,94,0.05); border:1px solid rgba(34,197,94,0.15);">
+            <span class="font-sans text-sm text-stone-500">⚡ Waktu dihemat</span>
+            <span class="font-sans text-sm font-bold text-green-600">4+ Jam → &lt; 5 Detik</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Stats bar -->
+    <div class="card p-8 reveal">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+        <div>
+          <p class="metric text-4xl mb-1">99.9%</p>
+          <p class="font-sans text-xs text-stone-400 mt-1">Uptime Sistem</p>
+        </div>
+        <div>
+          <p class="metric text-4xl mb-1">30+</p>
+          <p class="font-sans text-xs text-stone-400 mt-1">Jam Dihemat / Minggu</p>
+        </div>
+        <div>
+          <p class="metric text-4xl mb-1">0%</p>
+          <p class="font-sans text-xs text-stone-400 mt-1">Human Error Rutin</p>
+        </div>
+        <div>
+          <p class="metric text-4xl mb-1">24/7</p>
+          <p class="font-sans text-xs text-stone-400 mt-1">Otomasi Berjalan</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- Divider -->
+<div class="divider"></div>
+
+
+<!-- ============================================================
+     SECTION 3 — SERVICES BENTO GRID
+============================================================ -->
+<section id="services" class="py-24 md:py-32 px-6 relative">
+
+  <div class="max-w-6xl mx-auto">
+
+    <!-- Header -->
+    <div class="mb-16 reveal">
+      <div class="eyebrow mb-5">Layanan</div>
+      <h2 class="font-serif text-4xl md:text-5xl font-bold text-stone-900 mb-4 leading-tight">
+        Yang Kami <em class="not-italic" style="color:var(--tc);">Bangun</em> untuk Anda
+      </h2>
+      <p class="font-sans text-stone-500 text-lg max-w-lg leading-relaxed">
+        Setiap solusi dirancang khusus — bukan template generik, bukan solusi setengah matang.
+      </p>
+    </div>
+
+    <!-- Row 1: 2 cards -->
+    <div class="grid md:grid-cols-2 gap-6 mb-6 reveal">
+
+      <!-- Card: WhatsApp / Telegram Bot -->
+      <div class="card p-9" id="svc-wabot">
+        <div class="flex items-start justify-between mb-6">
+          <div class="w-14 h-14 rounded-2xl flex items-center justify-center"
+               style="background:rgba(34,197,94,0.07); border:1px solid rgba(34,197,94,0.2);">
+            <i class="fa-brands fa-whatsapp text-2xl text-green-600"></i>
+          </div>
+          <span class="cbadge cb-green">Populer</span>
+        </div>
+        <h3 class="font-serif text-2xl font-bold text-stone-800 mb-3">WhatsApp &amp; Telegram AI Bot</h3>
+        <p class="font-sans text-stone-500 text-base leading-relaxed mb-6">
+          Asisten AI cerdas yang melayani pelanggan Anda 24/7 di WhatsApp dan Telegram. Mampu menjawab FAQ, memproses pesanan, hingga escalation ke human-agent — berbasis LLM dengan knowledge base bisnis Anda sendiri.
+        </p>
+        <div class="flex flex-wrap gap-2">
+          <span class="tag">n8n / Make.com</span>
+          <span class="tag">GPT-4o / Gemini</span>
+          <span class="tag">WhatsApp Business API</span>
+          <span class="tag">RAG / Knowledge Base</span>
+        </div>
+      </div>
+
+      <!-- Card: CRM Automation -->
+      <div class="card p-9" id="svc-crm">
+        <div class="w-14 h-14 rounded-2xl flex items-center justify-center mb-6"
+             style="background:rgba(184,92,56,0.07); border:1px solid rgba(184,92,56,0.2);">
+          <i class="fa-solid fa-arrows-rotate text-2xl" style="color:var(--tc);"></i>
+        </div>
+        <h3 class="font-serif text-2xl font-bold text-stone-800 mb-3">Custom CRM &amp; Database Automation</h3>
+        <p class="font-sans text-stone-500 text-base leading-relaxed mb-6">
+          Sinkronisasi data otomatis antar platform — Notion, Airtable, Google Sheets, HubSpot — tanpa satu baris kode manual pun. Lead masuk, CRM terupdate, invoice terkirim.
+        </p>
+        <div class="flex flex-wrap gap-2">
+          <span class="tag">n8n Workflow</span>
+          <span class="tag">Google Sheets API</span>
+          <span class="tag">HubSpot / Notion</span>
+          <span class="tag">Webhook Integration</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Row 2: 2 cards -->
+    <div class="grid md:grid-cols-2 gap-6 reveal">
+
+      <!-- Card: Lead Generation -->
+      <div class="card p-9" id="svc-leadgen">
+        <div class="w-14 h-14 rounded-2xl flex items-center justify-center mb-6"
+             style="background:rgba(245,158,11,0.07); border:1px solid rgba(245,158,11,0.2);">
+          <i class="fa-solid fa-magnet text-2xl text-amber-500"></i>
+        </div>
+        <h3 class="font-serif text-2xl font-bold text-stone-800 mb-3">Auto Lead Generation Workflow</h3>
+        <p class="font-sans text-stone-500 text-base leading-relaxed mb-6">
+          Sistem scraping + enrichment + personalized outreach otomatis. Dari prospek ditemukan, data diperkaya, hingga pesan terkirim — semuanya tanpa campur tangan manusia.
+        </p>
+        <div class="flex flex-wrap gap-2">
+          <span class="tag">SerpAPI / Google Search</span>
+          <span class="tag">AI Enrichment</span>
+          <span class="tag">Email / WA Outreach</span>
+          <span class="tag">Make.com Pipeline</span>
+        </div>
+      </div>
+
+      <!-- Card: AI Core / LLM / RAG -->
+      <div class="card p-9" id="svc-aicore">
+        <div class="flex items-start justify-between mb-6">
+          <div class="w-14 h-14 rounded-2xl flex items-center justify-center"
+               style="background:rgba(139,92,246,0.07); border:1px solid rgba(139,92,246,0.2);">
+            <i class="fa-solid fa-microchip text-2xl text-purple-500"></i>
+          </div>
+          <div class="flex gap-2">
+            <span class="cbadge" style="background:rgba(139,92,246,0.07); border:1px solid rgba(139,92,246,0.2); color:#7c3aed;">LLM</span>
+            <span class="cbadge cb-tc">RAG</span>
+          </div>
+        </div>
+        <h3 class="font-serif text-2xl font-bold text-stone-800 mb-3">AI Core Integration — LLM &amp; RAG</h3>
+        <p class="font-sans text-stone-500 text-base leading-relaxed mb-6">
+          Integrasikan kecerdasan buatan ke inti sistem bisnis — chatbot kontekstual berbasis dokumen perusahaan, klasifikasi otomatis, ekstraksi data invoice/PDF, dan AI decision engine.
+        </p>
+        <div class="flex flex-wrap gap-2">
+          <span class="tag">OpenAI GPT-4o</span>
+          <span class="tag">Claude / Gemini</span>
+          <span class="tag">Vector DB (Pinecone)</span>
+          <span class="tag">RAG Pipeline</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- Divider -->
+<div class="divider"></div>
+
+
+<!-- ============================================================
+     SECTION 4 — PORTFOLIO / PROYEK (3 Project Cards, max 2/baris)
+============================================================ -->
+<section id="portfolio" class="py-24 md:py-32 px-6 relative">
+
+  <!-- Very faint warm tint -->
+  <div class="pointer-events-none absolute inset-0"
+       style="background: radial-gradient(ellipse 60% 40% at 50% 60%, rgba(184,92,56,0.03) 0%, transparent 70%);"></div>
+
+  <div class="max-w-6xl mx-auto relative">
+
+    <!-- Header -->
+    <div class="mb-16 reveal">
+      <div class="eyebrow mb-5">Portofolio Proyek</div>
+      <h2 class="font-serif text-4xl md:text-5xl font-bold text-stone-900 mb-4 leading-tight">
+        Proyek Nyata, <em class="not-italic" style="color:var(--tc);">Hasil Terukur</em>
+      </h2>
+      <p class="font-sans text-stone-500 text-lg max-w-xl leading-relaxed">
+        Tiga implementasi nyata yang sudah dibangun. Setiap proyek memecahkan masalah bisnis yang konkrit dengan hasil yang bisa dirasakan langsung.
+      </p>
+    </div>
+
+    <!-- ---- Row 1: Project 1 (full width) ---- -->
+    <div class="reveal mb-8">
+      <div class="project-card" id="proj-1">
+
+        <!-- Project number + label -->
+        <div class="flex items-center justify-between mb-8">
+          <div class="flex items-center gap-4">
+            <span class="font-serif text-6xl font-bold" style="color:rgba(184,92,56,0.15); line-height:1;">01</span>
+            <div>
+              <span class="cbadge cb-tc mb-1">Email Automation</span>
+              <p class="font-sans text-xs text-stone-400 mt-1">Proyek Live · n8n + OpenAI + Telegram</p>
+            </div>
+          </div>
+          <div class="hidden md:flex items-center gap-2">
+            <div class="status-dot"></div>
+            <span class="font-sans text-xs text-green-600 font-semibold">Deployed</span>
+          </div>
+        </div>
+
+        <!-- Title -->
+        <h3 class="font-serif text-3xl md:text-4xl font-bold text-stone-900 mb-6 leading-tight">
+          Otomatisasi Penyortiran Email<br />&amp; Sistem Peringatan Instan
+        </h3>
+
+        <!-- Problem + Solution side by side -->
+        <div class="grid md:grid-cols-2 gap-6 mb-8">
+
+          <!-- Problem -->
+          <div class="stat-box">
+            <div class="flex items-center gap-2 mb-3">
+              <span class="label-pill lp-red">Masalah</span>
+            </div>
+            <p class="font-sans text-stone-600 text-lg leading-relaxed">
+              Mengurangi waktu yang terbuang karena membaca ratusan email masuk satu per satu dari berbagai akun — setiap hari, tanpa henti.
+            </p>
+          </div>
+
+          <!-- Solution -->
+          <div class="stat-box" style="border-color:rgba(184,92,56,0.15); background:rgba(184,92,56,0.025);">
+            <div class="flex items-center gap-2 mb-3">
+              <span class="label-pill lp-green">Solusi &amp; Dampak</span>
+            </div>
+            <p class="font-sans text-stone-600 text-lg leading-relaxed">
+              AI cerdas otomatis menyaring email masuk ke <strong class="text-stone-800">4 kategori urgensi</strong>. Email "Sangat Penting" langsung diteruskan ke Telegram Anda secara instan. Sisanya dirangkum dalam laporan harian. Hemat waktu, bebas repot.
+            </p>
+          </div>
+        </div>
+
+        <!-- Metrics -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <div class="stat-box text-center">
+            <p class="metric text-3xl mb-1">4</p>
+            <p class="font-sans text-xs text-stone-400 mt-1">Level Urgensi Otomatis</p>
+          </div>
+          <div class="stat-box text-center">
+            <p class="metric text-3xl mb-1">&lt;30<span class="font-sans font-light text-stone-400 text-base">dtk</span></p>
+            <p class="font-sans text-xs text-stone-400 mt-1">Alert ke Telegram</p>
+          </div>
+          <div class="stat-box text-center">
+            <p class="metric text-3xl mb-1">100%</p>
+            <p class="font-sans text-xs text-stone-400 mt-1">Email Terproses Otomatis</p>
+          </div>
+          <div class="stat-box text-center">
+            <p class="metric text-3xl mb-1">0</p>
+            <p class="font-sans text-xs text-stone-400 mt-1">Email Penting Terlewat</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ---- Row 2: Project 2 + Project 3 side by side ---- -->
+    <div class="grid md:grid-cols-2 gap-8 reveal">
+
+      <!-- Project 2 -->
+      <div class="project-card flex flex-col" id="proj-2">
+
+        <div class="flex items-center justify-between mb-6">
+          <div class="flex items-center gap-3">
+            <span class="font-serif text-5xl font-bold" style="color:rgba(184,92,56,0.15); line-height:1;">02</span>
+            <div>
+              <span class="cbadge cb-tc mb-1">Market Intelligence</span>
+              <p class="font-sans text-xs text-stone-400 mt-1">n8n + SerpAPI + LLM + Telegram</p>
+            </div>
+          </div>
+          <div class="flex items-center gap-2">
+            <div class="status-dot"></div>
+            <span class="font-sans text-xs text-green-600 font-semibold">Live</span>
+          </div>
+        </div>
+
+        <h3 class="font-serif text-2xl md:text-3xl font-bold text-stone-900 mb-5 leading-tight">
+          Sistem Pemantau Kompetitor &amp; Tren Pasar Otomatis
+        </h3>
+
+        <!-- Problem -->
+        <div class="stat-box mb-4">
+          <span class="label-pill lp-red mb-3 inline-block">Masalah</span>
+          <p class="font-sans text-stone-600 text-lg leading-relaxed">
+            Repot harus riset manual di Google setiap hari untuk mencari tahu tren terbaru atau pergerakan kompetitor bisnis Anda.
+          </p>
+        </div>
+
+        <!-- Solution -->
+        <div class="stat-box mb-6" style="border-color:rgba(184,92,56,0.15); background:rgba(184,92,56,0.025);">
+          <span class="label-pill lp-green mb-3 inline-block">Solusi &amp; Dampak</span>
+          <p class="font-sans text-stone-600 text-lg leading-relaxed">
+            Robot asisten otomatis melakukan pencarian di Google berkala berdasarkan kata kunci bisnis Anda. Hasil riset dan pergerakan kompetitor <strong class="text-stone-800">dirangkum lalu dikirim langsung ke Telegram Anda</strong> secara terjadwal.
+          </p>
+        </div>
+
+        <!-- Metrics -->
+        <div class="grid grid-cols-2 gap-4 mt-auto">
+          <div class="stat-box text-center">
+            <p class="metric text-3xl mb-1">50+</p>
+            <p class="font-sans text-xs text-stone-400 mt-1">Keyword Dipantau</p>
+          </div>
+          <div class="stat-box text-center">
+            <p class="metric text-3xl mb-1">15+<span class="font-sans font-light text-stone-400 text-base">jam</span></p>
+            <p class="font-sans text-xs text-stone-400 mt-1">Riset Manual Dihemat/Minggu</p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Project 3 -->
+      <div class="project-card flex flex-col" id="proj-3">
+
+        <div class="flex items-center justify-between mb-6">
+          <div class="flex items-center gap-3">
+            <span class="font-serif text-5xl font-bold" style="color:rgba(184,92,56,0.15); line-height:1;">03</span>
+            <div>
+              <span class="cbadge cb-tc mb-1">FinTech / Kredit</span>
+              <p class="font-sans text-xs text-stone-400 mt-1">n8n + Google Sheets + Telegram</p>
+            </div>
+          </div>
+          <div class="flex items-center gap-2">
+            <div class="status-dot"></div>
+            <span class="font-sans text-xs text-green-600 font-semibold">Live</span>
+          </div>
+        </div>
+
+        <h3 class="font-serif text-2xl md:text-3xl font-bold text-stone-900 mb-5 leading-tight">
+          Otomatisasi Input Data &amp; Analisis Kelayakan Kredit Instan
+        </h3>
+
+        <!-- Problem -->
+        <div class="stat-box mb-4">
+          <span class="label-pill lp-red mb-3 inline-block">Masalah</span>
+          <p class="font-sans text-stone-600 text-lg leading-relaxed">
+            Input data manual ke Google Sheets yang lambat dan rawan salah hitung saat menganalisis kelayakan kredit pelanggan.
+          </p>
+        </div>
+
+        <!-- Solution -->
+        <div class="stat-box mb-6" style="border-color:rgba(184,92,56,0.15); background:rgba(184,92,56,0.025);">
+          <span class="label-pill lp-green mb-3 inline-block">Solusi &amp; Dampak</span>
+          <p class="font-sans text-stone-600 text-lg leading-relaxed">
+            Sistem otomatis memasukkan data ke Google Sheets dan langsung menghitung skor kredit berbasis rumus kustom Anda. <strong class="text-stone-800">Hasil analisis risiko dikirim ke Telegram detik itu juga.</strong>
+          </p>
+        </div>
+
+        <!-- Metrics -->
+        <div class="grid grid-cols-2 gap-4 mt-auto">
+          <div class="stat-box text-center">
+            <p class="metric text-3xl mb-1">95%</p>
+            <p class="font-sans text-xs text-stone-400 mt-1">Penurunan Human Error</p>
+          </div>
+          <div class="stat-box text-center">
+            <p class="metric text-3xl mb-1">&lt;5<span class="font-sans font-light text-stone-400 text-base">dtk</span></p>
+            <p class="font-sans text-xs text-stone-400 mt-1">Analisis Kredit Selesai</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Bottom CTA bar -->
+    <div class="card mt-10 p-8 flex flex-col md:flex-row items-center justify-between gap-6 reveal">
+      <div>
+        <p class="font-serif text-xl font-semibold text-stone-800">Tantangan serupa di bisnis Anda?</p>
+        <p class="font-sans text-stone-500 text-base mt-1">Konsultasikan kebutuhan Anda — gratis, tanpa komitmen.</p>
+      </div>
+      <a href="https://wa.me/6382168696399" target="_blank" rel="noopener" class="btn-wa flex-shrink-0">
+        <i class="fa-brands fa-whatsapp text-lg"></i>
+        Diskusi Gratis Sekarang
+      </a>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- Divider -->
+<div class="divider"></div>
+
+
+<!-- ============================================================
+     SECTION 5 — CONTACT / CTA & FOOTER
+============================================================ -->
+<section id="contact" class="py-24 md:py-36 px-6 relative overflow-hidden">
+
+  <!-- Warm ambient glow -->
+  <div class="pointer-events-none absolute inset-0"
+       style="background: radial-gradient(ellipse 55% 40% at 50% 50%, rgba(184,92,56,0.05) 0%, transparent 65%);"></div>
+
+  <div class="max-w-4xl mx-auto relative">
+
+    <!-- Main CTA block -->
+    <div class="text-center mb-16 reveal">
+
+      <div class="eyebrow mb-8 inline-flex">
+        <div class="status-dot"></div>
+        Open for Collaboration
+      </div>
+
+      <h2 class="font-serif text-5xl md:text-6xl lg:text-7xl font-bold text-stone-900 leading-tight mb-6">
+        Mulai<br />
+        <em class="not-italic" style="color:var(--tc);">Otomatisasi</em><br />
+        Bisnis Anda.
+      </h2>
+
+      <p class="font-sans text-stone-500 text-xl max-w-xl mx-auto leading-relaxed mb-10">
+        Ceritakan tantangan workflow Anda. Kami rancangkan solusi AI Automation yang presisi — tanpa biaya konsultasi, tanpa basa-basi.
+      </p>
+
+      <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+        <a href="https://wa.me/6382168696399" target="_blank" rel="noopener"
+           id="contact-wa" class="btn-wa">
+          <i class="fa-brands fa-whatsapp text-lg"></i>
+          Chat via WhatsApp
+        </a>
+        <a href="https://calendly.com/tobingfelix2/30min" target="_blank" rel="noopener"
+           id="contact-cal" class="btn-ghost">
+          <i class="fa-regular fa-calendar"></i>
+          Jadwalkan via Calendly
+        </a>
+      </div>
+    </div>
+
+    <!-- Info cards -->
+    <div class="grid md:grid-cols-3 gap-5 mb-20 reveal">
+      <div class="card p-7 text-center">
+        <i class="fa-solid fa-bolt text-xl mb-3" style="color:var(--tc);"></i>
+        <p class="font-serif text-base font-semibold text-stone-800 mb-2">Respon Cepat</p>
+        <p class="font-sans text-sm text-stone-500">Membalas dalam 1–2 jam di jam kerja</p>
+      </div>
+      <div class="card p-7 text-center">
+        <i class="fa-solid fa-shield-halved text-xl text-green-600 mb-3"></i>
+        <p class="font-serif text-base font-semibold text-stone-800 mb-2">Konsultasi Gratis</p>
+        <p class="font-sans text-sm text-stone-500">Analisis kebutuhan &amp; proposal tanpa biaya</p>
+      </div>
+      <div class="card p-7 text-center">
+        <i class="fa-solid fa-file-contract text-xl text-purple-600 mb-3"></i>
+        <p class="font-serif text-base font-semibold text-stone-800 mb-2">Kontrak Transparan</p>
+        <p class="font-sans text-sm text-stone-500">Scope &amp; harga jelas dari awal</p>
+      </div>
+    </div>
+
+    <!-- Divider editorial -->
+    <div class="divider mb-12"></div>
+
+    <!-- Footer -->
+    <footer>
+      <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+
+        <!-- Brand -->
+        <a href="#hero" style="text-decoration:none;">
+          <span class="logo-felix">Felix</span><span class="logo-ai">.AI</span>
+          <p class="font-sans text-xs text-stone-400 mt-0.5">AI Automation Engineer</p>
+        </a>
+
+        <!-- Social Links — WA & LinkedIn only -->
+        <div class="flex items-center gap-3">
+
+          <!-- WhatsApp -->
+          <a href="https://wa.me/6382168696399" target="_blank" rel="noopener"
+             id="footer-wa" class="footer-social" title="WhatsApp">
+            <i class="fa-brands fa-whatsapp"></i>
+          </a>
+
+          <!-- LinkedIn -->
+          <a href="https://www.linkedin.com/in/felixgideon/" target="_blank" rel="noopener"
+             id="footer-linkedin" class="footer-social" title="LinkedIn">
+            <i class="fa-brands fa-linkedin-in"></i>
+          </a>
+
+        </div>
+
+        <!-- Copyright -->
+        <p class="font-sans text-xs text-stone-400 text-center">
+          &copy; <span id="footer-year"></span> Felix.AI. All rights reserved.
+        </p>
+
+      </div>
+    </footer>
+
+  </div>
+</section>
+
+
+<!-- Scroll-to-top -->
+<button id="scroll-top" onclick="window.scrollTo({top:0,behavior:'smooth'})"
+        title="Kembali ke atas" aria-label="Scroll to top">
+  <i class="fa-solid fa-chevron-up text-sm"></i>
+</button>
+
+
+<!-- ============================================================
+     JAVASCRIPT
+============================================================ -->
+<script>
+  // ---- Dynamic year ----
+  document.getElementById('footer-year').textContent = new Date().getFullYear();
+
+  // ---- Scroll Reveal ----
+  const obs = new IntersectionObserver(
+    entries => entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
+    }),
+    { threshold: 0.08, rootMargin: '0px 0px -30px 0px' }
+  );
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+  // ---- Smooth scroll ----
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const t = document.querySelector(a.getAttribute('href'));
+      if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+    });
+  });
+
+  // ---- Scroll-to-top visibility ----
+  const stBtn = document.getElementById('scroll-top');
+  window.addEventListener('scroll', () => {
+    stBtn.classList.toggle('show', window.scrollY > 400);
+  }, { passive: true });
+</script>
+<script type="text/javascript">
+  (function(d, t) {
+      var v = d.createElement(t), s = d.getElementsByTagName(t)[0];
+      v.onload = function() {
+        window.voiceflow.chat.load({
+          verify: { projectID: '6a26841a2d3a498b7f05fffd' },
+          url: 'https://general-runtime.voiceflow.com',
+          voice: {
+            url: "https://runtime-api.voiceflow.com"
+          }
+        }).then(() => {
+          // TRICK EKSTROVERT: Otomatis memicu jendela chat terbuka setelah delay 3 detik (3000ms)
+          setTimeout(() => {
+            window.voiceflow.chat.open();
+          }, 20000);
+        });
+      }
+      v.src = "https://cdn.voiceflow.com/widget-next/bundle.mjs"; v.type = "text/javascript"; s.parentNode.insertBefore(v, s);
+  })(document, 'script');
+</script>
+</body>
+</html>

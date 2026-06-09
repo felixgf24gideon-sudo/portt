@@ -1380,24 +1380,24 @@
   }, { passive: true });
 </script>
 <script type="text/javascript">
-  (function(d, t) {
-      var v = d.createElement(t), s = d.getElementsByTagName(t)[0];
-      v.onload = function() {
-        window.voiceflow.chat.load({
-          verify: { projectID: '6a26841a2d3a498b7f05fffd' },
-          url: 'https://general-runtime.voiceflow.com',
-          voice: {
-            url: "https://runtime-api.voiceflow.com"
-          }
-        }).then(() => {
-          // TRICK EKSTROVERT: Otomatis memicu jendela chat terbuka setelah delay 3 detik (3000ms)
-          setTimeout(() => {
-            window.voiceflow.chat.open();
-          }, 7000);
-        });
-      }
-      v.src = "https://cdn.voiceflow.com/widget-next/bundle.mjs"; v.type = "text/javascript"; s.parentNode.insertBefore(v, s);
-  })(document, 'script');
+  // Menunda eksekusi seluruh fungsi widget selama 7000 milidetik (7 detik)
+  setTimeout(function() {
+    (function(d, t) {
+        var v = d.createElement(t), s = d.getElementsByTagName(t)[0];
+        v.onload = function() {
+          window.voiceflow.chat.load({
+            verify: { projectID: '6a2769f5f9c48561ceb8ab20' },
+            url: 'https://general-runtime.voiceflow.com',
+            voice: {
+              url: "https://runtime-api.voiceflow.com"
+            }
+          });
+        }
+        v.src = "https://cdn.voiceflow.com/widget-next/bundle.mjs"; 
+        v.type = "text/javascript"; 
+        s.parentNode.insertBefore(v, s);
+    })(document, 'script');
+  }, 7000); // 7000ms = 7 detik
 </script>
 <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
 <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
